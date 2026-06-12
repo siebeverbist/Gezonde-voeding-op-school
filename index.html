@@ -499,7 +499,7 @@
     }
     .lunchbox-items {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: minmax(0, 1fr);
       gap: 0.75rem;
     }
     .lunchbox-item {
@@ -931,9 +931,8 @@
       .tips-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .myth-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .sources-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .lunchbox-items { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
-
-    /* ===== RESPONSIVE: DESKTOP (≥900px) ===== */
     @media (min-width: 900px) {
       .nav-links { display: flex; }
       .hamburger { display: none; }
