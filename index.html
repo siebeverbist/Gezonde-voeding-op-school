@@ -365,7 +365,8 @@
       border-radius: var(--radius-lg);
       padding: 1.5rem;
       box-shadow: var(--shadow-md);
-      max-width: 320px;
+      width: 100%;
+      max-width: 420px;
       margin: 0 auto;
     }
     .hero-deco-emoji {
@@ -972,9 +973,11 @@
       .hero-inner { gap: 1.75rem; }
       .hero-cta { flex-direction: column; }
       .hero-cta .btn { width: 100%; justify-content: center; }
-      .hero-deco-box { max-width: 280px; padding: 1.25rem; }
-      .hero-deco-emoji { font-size: 2rem; margin-bottom: 0.65rem; }
-      .hero-deco-item { font-size: 1.15rem; padding: 0.55rem; }
+      .hero-deco-box { max-width: 100%; padding: 1.25rem; }
+      .hero-deco-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.5rem; }
+      .hero-deco-item-wide { grid-column: span 4; }
+      .hero-deco-emoji { font-size: 2.25rem; margin-bottom: 0.75rem; }
+      .hero-deco-item { font-size: 1.4rem; padding: 0.6rem 0.4rem; }
     }
 
     /* ===== SMALL MOBILE (≤400px) ===== */
