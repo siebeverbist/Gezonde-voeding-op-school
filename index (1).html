@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gezonde voeding op school</title>
+  <meta name="description" content="Praktische en betrouwbare tips voor ouders van lagere schoolkinderen over gezonde voeding op school." />
+  <style>
+    /* ===== DESIGN TOKENS ===== */
+    :root {
+      --green-dark:   #2d6a4f;
+      --green-mid:    #52b788;
+      --green-light:  #d8f3dc;
+      --green-pale:   #f0faf3;
+      --blue-soft:    #e8f4f8;
+      --blue-mid:     #4a9eba;
+      --yellow-soft:  #fef9ec;
+      --yellow-mid:   #f4c842;
+      --yellow-dark:  #d4a017;
+      --white:        #ffffff;
+      --gray-100:     #f7f9f8;
+      --gray-200:     #eef1ef;
+      --gray-400:     #9bab9e;
+      --gray-600:     #5a6b5e;
+      --gray-800:     #2c3b2f;
+      --text-body:    #2c3b2f;
+      --text-muted:   #5a6b5e;
+      --radius-sm:    8px;
+      --radius-md:    16px;
+      --radius-lg:    24px;
+      --shadow-sm:    0 2px 8px rgba(44,59,47,0.07);
+      --shadow-md:    0 6px 24px rgba(44,59,47,0.11);
+      --shadow-lg:    0 12px 40px rgba(44,59,47,0.14);
+      --font-display: 'Georgia', 'Times New Roman', serif;
+      --font-body:    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --max-w:        1100px;
+      --nav-h:        64px;
+    }
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    body {
+      font-family: var(--font-body);
+      color: var(--text-body);
+      background: var(--white);
+      line-height: 1.65;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+    img, svg, video { max-width: 100%; height: auto; display: block; }
+    a { color: var(--green-dark); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    ul { list-style: none; }
+
+    /* ===== SKIP LINK ===== */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      background: var(--green-dark);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      z-index: 9999;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    /* ===== NAVIGATION ===== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--gray-200);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      padding: 0 1.25rem;
+    }
+    .nav-inner {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: clamp(0.8rem, 4.2vw, 1.05rem);
+      font-weight: bold;
+      color: var(--green-dark);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
+      flex-shrink: 1;
+    }
+    .nav-logo-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .nav-links {
+      display: none;
+      flex-direction: row;
+      gap: 0.15rem;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--gray-600);
+      padding: 0.35rem 0.6rem;
+      border-radius: var(--radius-sm);
+      transition: background 0.18s, color 0.18s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { background: var(--green-light); color: var(--green-dark); text-decoration: none; }
+    .nav-links a:focus-visible { outline: 2px solid var(--green-mid); outline-offset: 2px; }
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      border-radius: var(--radius-sm);
+      flex-shrink: 0;
+    }
+    .hamburger:focus-visible { outline: 2px solid var(--green-mid); }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--green-dark);
+      border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile nav drawer */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      z-index: 999;
+      flex-direction: column;
+      padding: 0.75rem 1.25rem 1rem;
+      gap: 0.25rem;
+      box-shadow: var(--shadow-md);
+      max-height: calc(100vh - var(--nav-h));
+      overflow-y: auto;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--gray-800);
+      padding: 0.7rem 0.9rem;
+      border-radius: var(--radius-sm);
+      transition: background 0.18s;
+    }
+    .mobile-nav a:hover { background: var(--green-light); text-decoration: none; }
+
+    /* ===== LAYOUT HELPERS ===== */
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+    .section {
+      padding: 4.5rem 0;
+      scroll-margin-top: var(--nav-h);
+    }
+    .hero { scroll-margin-top: var(--nav-h); }
+    .section-alt { background: var(--gray-100); }
+    .section-green { background: var(--green-pale); }
+    .section-yellow { background: var(--yellow-soft); }
+    .section-blue { background: var(--blue-soft); }
+    .section-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      background: var(--green-light);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      margin-bottom: 0.9rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 4vw, 2.1rem);
+      font-weight: bold;
+      color: var(--gray-800);
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ===== CARDS ===== */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    .card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-200);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .card-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .card-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--gray-800);
+      margin-bottom: 0.45rem;
+    }
+    .card p { font-size: 0.92rem; color: var(--text-muted); }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100svh;
+      padding-top: calc(var(--nav-h) + 3rem);
+      padding-bottom: 4rem;
+      background: linear-gradient(150deg, var(--green-pale) 0%, #e8f9ee 40%, var(--blue-soft) 100%);
+      display: flex;
+      align-items: center;
+    }
+    .hero-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--green-light);
+      color: var(--green-dark);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      letter-spacing: 0.04em;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 7vw, 3.5rem);
+      font-weight: bold;
+      color: var(--gray-800);
+      line-height: 1.15;
+    }
+    .hero-title span { color: var(--green-dark); }
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--text-muted);
+      max-width: 560px;
+    }
+    .hero-intro {
+      font-size: 0.97rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      background: rgba(255,255,255,0.7);
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md);
+      border-left: 3px solid var(--green-mid);
+    }
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.85rem 1.5rem;
+      border-radius: var(--radius-sm);
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s, border-color 0.18s, transform 0.15s;
+      text-decoration: none;
+      min-height: 48px;
+    }
+    .btn:focus-visible { outline: 2px solid var(--green-mid); outline-offset: 3px; }
+    .btn:hover { transform: translateY(-1px); text-decoration: none; }
+    .btn-primary {
+      background: var(--green-dark);
+      color: #fff;
+    }
+    .btn-primary:hover { background: #1e4d38; }
+    .btn-secondary {
+      background: var(--white);
+      color: var(--green-dark);
+      border-color: var(--green-mid);
+    }
+    .btn-secondary:hover { background: var(--green-light); }
+    .btn-yellow {
+      background: var(--yellow-mid);
+      color: var(--gray-800);
+    }
+    .btn-yellow:hover { background: var(--yellow-dark); }
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .hero-stat {
+      background: rgba(255,255,255,0.85);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1.2rem;
+      border: 1px solid var(--gray-200);
+      min-width: 120px;
+    }
+    .hero-stat-num {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: var(--green-dark);
+      line-height: 1;
+    }
+    .hero-stat-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+    /* Hero decorative bento illustration */
+    .hero-deco-box {
+      background: rgba(255,255,255,0.7);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md);
+      max-width: 320px;
+      margin: 0 auto;
+    }
+    .hero-deco-emoji {
+      font-size: 2.25rem;
+      margin-bottom: 0.85rem;
+      text-align: center;
+    }
+    .hero-deco-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.6rem;
+    }
+    .hero-deco-item {
+      border-radius: var(--radius-md);
+      padding: 0.65rem;
+      text-align: center;
+      font-size: 1.3rem;
+    }
+    .hero-deco-item-wide { grid-column: span 2; }
+
+    /* ===== WHY SECTION ===== */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.1rem;
+    }
+    .why-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: var(--white);
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-200);
+      transition: transform 0.2s;
+    }
+    .why-item:hover { transform: translateX(4px); }
+    .why-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--green-light);
+      border-radius: var(--radius-sm);
+    }
+    .why-text h3 { font-size: 0.97rem; font-weight: 700; color: var(--gray-800); margin-bottom: 0.25rem; }
+    .why-text p { font-size: 0.88rem; color: var(--text-muted); }
+
+    /* ===== VOEDINGSDRIEHOEK ===== */
+    .pyramid-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+    .pyramid {
+      width: 100%;
+      max-width: 380px;
+    }
+    .pyramid-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-sm);
+      margin-bottom: 4px;
+      height: 52px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--white);
+      text-align: center;
+      padding: 0 0.5rem;
+      clip-path: none;
+    }
+    .pyr-1 { background: #c13d3d; width: 30%; font-size: 0.7rem; }
+    .pyr-2 { background: #e07c3a; width: 48%; }
+    .pyr-3 { background: #e8a631; width: 62%; }
+    .pyr-4 { background: #6aab5a; width: 76%; }
+    .pyr-5 { background: #52b788; width: 88%; }
+    .pyr-6 { background: #4a9eba; width: 100%; }
+    .pyramid-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+    .pyramid-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      width: 100%;
+    }
+    .pyramid-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-200);
+    }
+    .pyramid-card-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .pyramid-card p { font-size: 0.9rem; color: var(--text-muted); }
+    .pyramid-card strong { color: var(--gray-800); }
+
+    /* ===== BROODDOOS ===== */
+    .lunchbox-visual {
+      background: linear-gradient(135deg, #e8f9ee, #f0faf3);
+      border: 2px dashed var(--green-mid);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .lunchbox-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--green-dark);
+      margin-bottom: 1.25rem;
+      text-align: center;
+    }
+    .lunchbox-items {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+    .lunchbox-item {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .lunchbox-item-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .lunchbox-item-text { font-size: 0.85rem; }
+    .lunchbox-item-text strong { display: block; font-size: 0.78rem; color: var(--green-dark); text-transform: uppercase; letter-spacing: 0.05em; }
+    .lunchbox-note {
+      background: var(--yellow-soft);
+      border: 1px solid #f4c842;
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+    .lunchbox-note-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .lunchbox-note p { font-size: 0.88rem; color: var(--gray-600); }
+
+    /* ===== SNACKS ===== */
+    .snack-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .snack-item {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-200);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .snack-emoji { font-size: 1.3rem; flex-shrink: 0; }
+    .warning-box {
+      background: #fff4e6;
+      border: 1px solid #f4a742;
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .warning-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+    .warning-box p { font-size: 0.88rem; color: var(--gray-800); }
+    .warning-box ul { margin-top: 0.5rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .warning-box li { background: rgba(244,167,66,0.15); padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.82rem; }
+
+    /* ===== DRANKEN ===== */
+    .drinks-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .drink-card {
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      border: 2px solid transparent;
+    }
+    .drink-card.best { background: #e8f9ee; border-color: var(--green-mid); }
+    .drink-card.ok { background: #eef5fb; border-color: #a8d4e8; }
+    .drink-card.limit { background: #fff4e6; border-color: #f4a742; }
+    .drink-card-icon { font-size: 2rem; flex-shrink: 0; }
+    .drink-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--gray-800); margin-bottom: 0.3rem; }
+    .drink-card p { font-size: 0.87rem; color: var(--text-muted); }
+    .drink-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+    .badge-best { background: var(--green-mid); color: #fff; }
+    .badge-ok { background: var(--blue-mid); color: #fff; }
+    .badge-limit { background: #f4a742; color: #fff; }
+    .water-tips {
+      margin-top: 1.5rem;
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-200);
+    }
+    .water-tips h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--green-dark); }
+    .water-tips li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.45rem;
+    }
+    .water-tips li::before { content: '💧'; flex-shrink: 0; }
+
+    /* ===== BETREKKEN ===== */
+    .involve-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .involve-item {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-200);
+    }
+    .involve-num {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      background: var(--green-dark);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+    .involve-item h3 { font-size: 0.92rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .involve-item p { font-size: 0.86rem; color: var(--text-muted); }
+    .smaken-tip {
+      margin-top: 1.5rem;
+      background: var(--green-light);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.5rem;
+      font-size: 0.9rem;
+      color: var(--green-dark);
+      font-weight: 500;
+    }
+
+    /* ===== DRUKKE OUDERS ===== */
+    .tips-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+    }
+    .tip-row {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-200);
+      font-size: 0.9rem;
+    }
+    .tip-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+    /* ===== VALKUILEN ===== */
+    .myth-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .myth-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-200);
+    }
+    .myth-header {
+      background: #fff4e6;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #a05a00;
+      border-bottom: 1px solid #f4c842;
+    }
+    .myth-body {
+      padding: 0.85rem 1.25rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .myth-body strong { color: var(--green-dark); }
+
+    /* ===== VOORBEELDWEEK ===== */
+    .week-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 0.5rem;
+    }
+    .week-table {
+      width: 100%;
+      min-width: 560px;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+    .week-table th {
+      background: var(--green-dark);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.75rem 1rem;
+      text-align: left;
+    }
+    .week-table th:first-child { border-radius: var(--radius-sm) 0 0 0; }
+    .week-table th:last-child { border-radius: 0 var(--radius-sm) 0 0; }
+    .week-table td {
+      padding: 0.75rem 1rem;
+      font-size: 0.88rem;
+      vertical-align: top;
+      border-bottom: 1px solid var(--gray-200);
+      background: var(--white);
+    }
+    .week-table tr:nth-child(even) td { background: var(--gray-100); }
+    .week-table td:first-child { font-weight: 700; color: var(--green-dark); white-space: nowrap; }
+    .week-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .week-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-200);
+    }
+    .week-card-day {
+      background: var(--green-dark);
+      color: #fff;
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .week-card-body {
+      padding: 0.85rem 1rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.4rem;
+    }
+    .week-card-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .week-card-item span { font-size: 1rem; flex-shrink: 0; }
+
+    /* ===== RANDOM TIP ===== */
+    .tip-banner {
+      background: linear-gradient(135deg, var(--green-dark), #1a5038);
+      color: #fff;
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .tip-banner h3 { font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 1rem; }
+    .tip-display {
+      background: rgba(255,255,255,0.12);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      margin: 0 auto 1.25rem;
+      max-width: 540px;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-tip {
+      background: var(--yellow-mid);
+      color: var(--gray-800);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.18s, transform 0.15s;
+      min-height: 48px;
+    }
+    .btn-tip:hover { background: var(--yellow-dark); transform: translateY(-1px); }
+    .btn-tip:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+    /* ===== CHECKLIST ===== */
+    .checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      max-width: 600px;
+    }
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      box-shadow: var(--shadow-sm);
+      border: 2px solid var(--gray-200);
+      cursor: pointer;
+      transition: border-color 0.18s, background 0.18s;
+      user-select: none;
+    }
+    .checklist-item:hover { border-color: var(--green-mid); }
+    .checklist-item.checked { background: var(--green-pale); border-color: var(--green-mid); }
+    .check-box {
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--gray-400);
+      border-radius: 6px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: transparent;
+      transition: border-color 0.18s, background 0.18s, color 0.18s;
+    }
+    .checklist-item.checked .check-box {
+      background: var(--green-mid);
+      border-color: var(--green-mid);
+      color: #fff;
+    }
+    .checklist-item label {
+      font-size: 0.93rem;
+      cursor: pointer;
+      color: var(--gray-800);
+      font-weight: 500;
+    }
+    .checklist-item.checked label { color: var(--green-dark); }
+    .checklist-progress {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .progress-bar {
+      flex: 1;
+      height: 8px;
+      background: var(--gray-200);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--green-mid), var(--green-dark));
+      border-radius: 4px;
+      transition: width 0.3s;
+      width: 0%;
+    }
+    .progress-label { font-size: 0.82rem; color: var(--text-muted); white-space: nowrap; }
+
+    /* ===== BRONNEN ===== */
+    .sources-box {
+      background: var(--gray-100);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.5rem;
+      border: 1px solid var(--gray-200);
+    }
+    .sources-disclaimer {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      border-left: 3px solid var(--blue-mid);
+    }
+    .sources-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+    .source-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1.1rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-200);
+      font-size: 0.88rem;
+    }
+    .source-icon { font-size: 1.2rem; flex-shrink: 0; }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--gray-800);
+      color: #c8d8cb;
+      text-align: center;
+      padding: 2.5rem 1.25rem;
+      font-size: 0.85rem;
+    }
+    .footer strong { color: #fff; }
+    .footer p { margin-top: 0.4rem; }
+
+    /* ===== RESPONSIVE: TABLET (≥600px) ===== */
+    @media (min-width: 600px) {
+      .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .why-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .pyramid-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .snack-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .drinks-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .involve-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .tips-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .myth-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .sources-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    /* ===== RESPONSIVE: DESKTOP (≥900px) ===== */
+    @media (min-width: 900px) {
+      .nav-links { display: flex; }
+      .hamburger { display: none; }
+      .mobile-nav { display: none !important; }
+      .section { padding: 6rem 0; }
+      .hero-inner { flex-direction: row; align-items: center; gap: 4rem; }
+      .hero-text { flex: 1; }
+      .hero-deco { flex: 1; }
+      .card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .why-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .pyramid-wrapper { flex-direction: row; align-items: flex-start; gap: 3rem; }
+      .pyramid { flex-shrink: 0; }
+      .pyramid-cards { grid-template-columns: minmax(0, 1fr); max-width: 480px; }
+      .snack-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .drinks-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .involve-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .tips-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .myth-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .sources-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .week-cards { display: none; }
+      .week-scroll { display: block; }
+      .lunchbox-items { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    /* Hide table on mobile, show cards */
+    @media (max-width: 899px) {
+      .week-scroll { display: none; }
+    }
+
+    /* ===== MOBILE-SPECIFIC HERO TWEAKS (<900px) ===== */
+    @media (max-width: 899px) {
+      .hero {
+        min-height: auto;
+        padding-top: calc(var(--nav-h) + 1.5rem);
+        padding-bottom: 2.5rem;
+      }
+      .hero-inner { gap: 1.75rem; }
+      .hero-cta { flex-direction: column; }
+      .hero-cta .btn { width: 100%; justify-content: center; }
+      .hero-deco-box { max-width: 280px; padding: 1.25rem; }
+      .hero-deco-emoji { font-size: 2rem; margin-bottom: 0.65rem; }
+      .hero-deco-item { font-size: 1.15rem; padding: 0.55rem; }
+    }
+
+    /* ===== SMALL MOBILE (≤400px) ===== */
+    @media (max-width: 400px) {
+      .section { padding: 3.5rem 0; }
+      .section-lead { margin-bottom: 1.75rem; }
+      .hero { padding-top: calc(var(--nav-h) + 1rem); padding-bottom: 2rem; }
+      .hero-inner { gap: 1.25rem; }
+      .hero-intro { padding: 0.85rem 1rem; font-size: 0.92rem; }
+      .hero-stats { gap: 0.6rem; }
+      .hero-stat { min-width: 0; flex: 1 1 100%; padding: 0.75rem 1rem; }
+    }
+
+    /* ===== REDUCED MOTION ===== */
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ===== UTILITIES ===== */
+    .text-center { text-align: center; }
+    .mt-1 { margin-top: 0.5rem; }
+    .mt-2 { margin-top: 1rem; }
+    .mt-3 { margin-top: 1.5rem; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Ga naar inhoud</a>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" role="navigation" aria-label="Hoofdnavigatie">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="Gezonde voeding op school - naar boven">
+        <span class="nav-logo-icon" aria-hidden="true">🥗</span>
+        Gezonde voeding op school
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="#waarom">Waarom</a></li>
+        <li><a href="#driehoek">Driehoek</a></li>
+        <li><a href="#brooddoos">Brooddoos</a></li>
+        <li><a href="#tussendoortjes">Snacks</a></li>
+        <li><a href="#dranken">Dranken</a></li>
+        <li><a href="#betrekken">Kinderen</a></li>
+        <li><a href="#druk">Tips</a></li>
+        <li><a href="#checklist">Checklist</a></li>
+        <li><a href="#bronnen">Bronnen</a></li>
+      </ul>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu openen" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV DRAWER -->
+  <div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobiel menu">
+    <a href="#waarom" class="mobile-link">🌱 Waarom gezonde voeding?</a>
+    <a href="#driehoek" class="mobile-link">🔺 Voedingsdriehoek</a>
+    <a href="#brooddoos" class="mobile-link">🥪 Gezonde brooddoos</a>
+    <a href="#tussendoortjes" class="mobile-link">🍎 Tussendoortjes</a>
+    <a href="#dranken" class="mobile-link">💧 Dranken</a>
+    <a href="#betrekken" class="mobile-link">👦 Kinderen betrekken</a>
+    <a href="#druk" class="mobile-link">⏱️ Tips voor drukke ouders</a>
+    <a href="#valkuilen" class="mobile-link">⚠️ Veelgemaakte valkuilen</a>
+    <a href="#voorbeeldweek" class="mobile-link">📅 Voorbeeldweek</a>
+    <a href="#checklist" class="mobile-link">✅ Checklist</a>
+    <a href="#bronnen" class="mobile-link">📚 Bronnen</a>
+  </div>
+
+  <main id="main">
+
+    <!-- ===== 1. HERO ===== -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-text">
+            <div class="hero-badge" role="img" aria-label="Groene label">
+              <span aria-hidden="true">🌿</span> Betrouwbare informatie voor ouders
+            </div>
+            <h1 class="hero-title" id="hero-title">
+              <span>Gezonde voeding</span><br>op school
+            </h1>
+            <p class="hero-subtitle">
+              Praktische en betrouwbare tips voor ouders van lagere schoolkinderen.
+            </p>
+            <div class="hero-intro">
+              Wat kinderen eten heeft dagelijks een merkbaar effect op hoe ze zich voelen, hoeveel energie ze hebben en hoe goed ze kunnen meevolgen in de klas. Gezonde voeding ondersteunt groei, concentratie en algeheel welzijn — en het hoeft niet ingewikkeld te zijn.
+            </div>
+            <div class="hero-cta">
+              <a href="#brooddoos" class="btn btn-primary">
+                <span aria-hidden="true">🥪</span> Bekijk gezonde brooddoos
+              </a>
+              <a href="#druk" class="btn btn-secondary">
+                <span aria-hidden="true">💡</span> Tips voor ouders
+              </a>
+            </div>
+            <div class="hero-stats" role="list" aria-label="Feiten">
+              <div class="hero-stat" role="listitem">
+                <div class="hero-stat-num">5 × week</div>
+                <div class="hero-stat-label">schoollunches per kind</div>
+              </div>
+              <div class="hero-stat" role="listitem">
+                <div class="hero-stat-num">~40%</div>
+                <div class="hero-stat-label">dagelijkse calorie-inname op school</div>
+              </div>
+              <div class="hero-stat" role="listitem">
+                <div class="hero-stat-num">5–10×</div>
+                <div class="hero-stat-label">proeven voor een nieuwe smaak went</div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-deco" aria-hidden="true">
+            <div class="hero-deco-box">
+              <div class="hero-deco-emoji">🍱</div>
+              <div class="hero-deco-grid">
+                <div class="hero-deco-item" style="background:var(--green-light);">🍞</div>
+                <div class="hero-deco-item" style="background:#fde8e8;">🥕</div>
+                <div class="hero-deco-item" style="background:#fff3cd;">🍎</div>
+                <div class="hero-deco-item" style="background:#e8f4f8;">🧀</div>
+                <div class="hero-deco-item hero-deco-item-wide" style="background:#d0f0f8;">💧 Water</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 2. WAAROM ===== -->
+    <section class="section" id="waarom" aria-labelledby="waarom-title">
+      <div class="container">
+        <span class="section-tag">Waarom het telt</span>
+        <h2 class="section-title" id="waarom-title">Waarom is gezonde voeding belangrijk voor schoolkinderen?</h2>
+        <p class="section-lead">
+          Voeding heeft een directe invloed op hoe kinderen zich dagelijks voelen op school. Hieronder lees je waarom het — genuanceerd en feitelijk — de moeite loont om aandacht te besteden aan wat je kind eet.
+        </p>
+        <div class="why-grid" role="list">
+          <div class="why-item" role="listitem">
+            <div class="why-icon" aria-hidden="true">📈</div>
+            <div class="why-text">
+              <h3>Groei en ontwikkeling</h3>
+              <p>Kinderen in de lagere school groeien snel. Voldoende eiwitten, vitaminen en mineralen ondersteunen die lichamelijke en cognitieve ontwikkeling. Een evenwichtige voeding helpt om alle essentiële voedingsstoffen binnen te krijgen.</p>
+            </div>
+          </div>
+          <div class="why-item" role="listitem">
+            <div class="why-icon" aria-hidden="true">⚡</div>
+            <div class="why-text">
+              <h3>Energie tijdens de schooldag</h3>
+              <p>Een goed ontbijt en een evenwichtige brooddoos helpen om de energie stabiel te houden doorheen de dag. Kinderen die te weinig of weinig gevarieerd eten, kunnen zich moeilijker concentreren en zijn sneller moe.</p>
+            </div>
+          </div>
+          <div class="why-item" role="listitem">
+            <div class="why-icon" aria-hidden="true">🧠</div>
+            <div class="why-text">
+              <h3>Concentratie en leren</h3>
+              <p>Voldoende voedingsstoffen dragen bij aan een stabiel energieniveau in de hersenen. Hoewel voeding geen wondermiddel is, kan een tekort aan bepaalde voedingsstoffen het moeilijker maken om aandachtig te blijven in de klas.</p>
+            </div>
+          </div>
+          <div class="why-item" role="listitem">
+            <div class="why-icon" aria-hidden="true">🛡️</div>
+            <div class="why-text">
+              <h3>Ondersteuning van het immuunsysteem</h3>
+              <p>Gevarieerde voeding rijk aan groenten, fruit, volkorenproducten en eiwitten levert vitaminen en antioxidanten die bijdragen aan een goede weerstand. Zeker op school, waar kinderen veel contact hebben, kan dit een rol spelen.</p>
+            </div>
+          </div>
+          <div class="why-item" role="listitem">
+            <div class="why-icon" aria-hidden="true">🌱</div>
+            <div class="why-text">
+              <h3>Gezonde gewoontes op lange termijn</h3>
+              <p>Voedingspatronen die kinderen in hun vroege jaren ontwikkelen, hebben een invloed op hun gewoontes als volwassene. Een positieve en gevarieerde eetomgeving thuis legt een goede basis — zonder dwang of perfectie.</p>
+            </div>
+          </div>
+          <div class="why-item" role="listitem">
+            <div class="why-icon" aria-hidden="true">📊</div>
+            <div class="why-text">
+              <h3>Stabiel energieniveau</h3>
+              <p>Voeding met veel suiker geeft een snelle energiepiek gevolgd door een dip. Volkoren producten, eiwitten en groenten zorgen voor een tragere, stabielere afgifte van energie — wat kinderen de hele ochtend of middag actief houdt.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 3. VOEDINGSDRIEHOEK ===== -->
+    <section class="section section-green" id="driehoek" aria-labelledby="driehoek-title">
+      <div class="container">
+        <span class="section-tag">Voedingsleer</span>
+        <h2 class="section-title" id="driehoek-title">De voedingsdriehoek eenvoudig uitgelegd</h2>
+        <p class="section-lead">
+          De voedingsdriehoek van het Vlaams Instituut Gezond Leven laat zien van welke voedingsgroepen we dagelijks meer of minder nodig hebben. Hoe groter de laag, hoe vaker je die voeding eet.
+        </p>
+        <div class="pyramid-wrapper">
+          <div class="pyramid" role="img" aria-label="Visuele voedingsdriehoek">
+            <p style="text-align:center;font-size:0.75rem;color:var(--text-muted);margin-bottom:0.75rem;">⬆️ Minder vaak → vaker ⬇️</p>
+            <div style="display:flex;flex-direction:column;align-items:center;">
+              <div class="pyramid-row pyr-1" aria-label="Zo weinig mogelijk: sterk bewerkte producten">🚫<br>Beperken</div>
+              <div class="pyramid-row pyr-2" aria-label="Soms: zoetwaren en vet">🍬 Soms</div>
+              <div class="pyramid-row pyr-3" aria-label="Regelmatig: vlees, vis, eieren">🥚 Regelmatig</div>
+              <div class="pyramid-row pyr-4" aria-label="Elke dag: zuivel en volkoren">🧀 Dagelijks</div>
+              <div class="pyramid-row pyr-5" aria-label="Veel: groenten en fruit">🥦 Veel groenten & fruit</div>
+              <div class="pyramid-row pyr-6" aria-label="Basis: water en volkoren">💧 Water & volkoren — De basis</div>
+            </div>
+            <p class="pyramid-label">Gebaseerd op de voedingsdriehoek van Gezond Leven (Vlaanderen)</p>
+          </div>
+          <div class="pyramid-cards">
+            <div class="pyramid-card">
+              <div class="pyramid-card-dot" style="background:#4a9eba;" aria-hidden="true"></div>
+              <div><p><strong>Drink water als basis.</strong> Water is de gezondste dorstlesser voor kinderen. Melk en ongezoete alternatieven kunnen aanvullend.</p></div>
+            </div>
+            <div class="pyramid-card">
+              <div class="pyramid-card-dot" style="background:#52b788;" aria-hidden="true"></div>
+              <div><p><strong>Eet veel groenten en fruit.</strong> Streef naar minstens 5 porties per dag in gevarieerde kleuren. Elk kleur levert andere voedingsstoffen.</p></div>
+            </div>
+            <div class="pyramid-card">
+              <div class="pyramid-card-dot" style="background:#6aab5a;" aria-hidden="true"></div>
+              <div><p><strong>Kies volkoren producten.</strong> Volkoren brood, pasta en rijst bevatten meer vezels en voedingsstoffen dan witte varianten, en houden langer verzadigd.</p></div>
+            </div>
+            <div class="pyramid-card">
+              <div class="pyramid-card-dot" style="background:#e8a631;" aria-hidden="true"></div>
+              <div><p><strong>Voldoende eiwitten.</strong> Via zuivel, eieren, peulvruchten, vlees of vis. Eiwitten zijn essentieel voor groei en herstel.</p></div>
+            </div>
+            <div class="pyramid-card">
+              <div class="pyramid-card-dot" style="background:#e07c3a;" aria-hidden="true"></div>
+              <div><p><strong>Beperk sterk bewerkte producten.</strong> Koekjes, chips, frisdrank en snoep mogen soms — maar zijn geen dagelijkse basisvoeding voor kinderen.</p></div>
+            </div>
+            <div class="pyramid-card">
+              <div class="pyramid-card-dot" style="background:#c13d3d;" aria-hidden="true"></div>
+              <div><p><strong>Varieer voldoende.</strong> Geen enkel product bevat alle voedingsstoffen. Afwisseling over de week is belangrijker dan perfectie op één dag.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 4. BROODDOOS ===== -->
+    <section class="section" id="brooddoos" aria-labelledby="brooddoos-title">
+      <div class="container">
+        <span class="section-tag">Schoollunch</span>
+        <h2 class="section-title" id="brooddoos-title">Wat zit er in een gezonde brooddoos?</h2>
+        <p class="section-lead">
+          Een goede brooddoos hoeft niet perfect te zijn. Het gaat om evenwicht, haalbaarheid en regelmaat. Hieronder vind je een praktisch kader én concrete voorbeelden.
+        </p>
+        <div class="lunchbox-visual">
+          <div class="lunchbox-title">🥪 De ideale brooddoos bestaat uit:</div>
+          <div class="lunchbox-items">
+            <div class="lunchbox-item">
+              <div class="lunchbox-item-icon" aria-hidden="true">🍞</div>
+              <div class="lunchbox-item-text">
+                <strong>Koolhydraten</strong>
+                Volkoren brood, wrap, pasta, rijstsalade
+              </div>
+            </div>
+            <div class="lunchbox-item">
+              <div class="lunchbox-item-icon" aria-hidden="true">🥕</div>
+              <div class="lunchbox-item-text">
+                <strong>Groenten</strong>
+                Komkommer, wortel, paprika, kerstomaat
+              </div>
+            </div>
+            <div class="lunchbox-item">
+              <div class="lunchbox-item-icon" aria-hidden="true">🍎</div>
+              <div class="lunchbox-item-text">
+                <strong>Fruit</strong>
+                Appel, banaan, druiven, peer, bessen
+              </div>
+            </div>
+            <div class="lunchbox-item">
+              <div class="lunchbox-item-icon" aria-hidden="true">🧀</div>
+              <div class="lunchbox-item-text">
+                <strong>Eiwitbron</strong>
+                Kaas, hummus, ei, kip, yoghurt, peulvruchten
+              </div>
+            </div>
+            <div class="lunchbox-item">
+              <div class="lunchbox-item-icon" aria-hidden="true">💧</div>
+              <div class="lunchbox-item-text">
+                <strong>Drank</strong>
+                Water als standaard
+              </div>
+            </div>
+            <div class="lunchbox-item">
+              <div class="lunchbox-item-icon" aria-hidden="true">✨</div>
+              <div class="lunchbox-item-text">
+                <strong>Optioneel extraatje</strong>
+                Notenpasta, yoghurt z.t.s., zelfgemaakte snack
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-icon" aria-hidden="true">🌾</div>
+            <div class="card-title">Volkoren koolhydraten</div>
+            <p>Volkoren brood, wrap of pasta zijn de basis. Ze leveren energie die langzamer vrijkomt dan witte varianten. Een pitabroodje, rijstsalade of restje couscous zijn ook prima alternatieven.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon" aria-hidden="true">🥦</div>
+            <div class="card-title">Groenten</div>
+            <p>Groentesticks zijn makkelijk mee te nemen en lekker om te knabbelen. Komkommer, wortel, paprika, kerstomaat of maïs zijn populair bij kinderen. Snij ze voor in stukjes voor extra gemak.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon" aria-hidden="true">🍓</div>
+            <div class="card-title">Fruit</div>
+            <p>Een stuk fruit is een ideale aanvulling. Kies voor seizoensfruit of wat er in huis is. Druiven of bessen zijn makkelijk om mee te nemen. Vermijd fruitsap als vervanger — dat bevat veel suiker en weinig vezels.</p>
+          </div>
+        </div>
+        <div class="lunchbox-note" role="note">
+          <div class="lunchbox-note-icon" aria-hidden="true">💬</div>
+          <p><strong>Onthoud:</strong> Een gezonde brooddoos hoeft niet elke dag anders of creatief te zijn. Consistentie en haalbaarheid zijn waardevoller dan perfectie. Als je kind elke dag zijn komkommer en boterham opeet, is dat al een mooie gewoonte.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5. TUSSENDOORTJES ===== -->
+    <section class="section section-alt" id="tussendoortjes" aria-labelledby="snacks-title">
+      <div class="container">
+        <span class="section-tag">Tussendoortjes</span>
+        <h2 class="section-title" id="snacks-title">Gezonde tussendoortjes voor op school</h2>
+        <p class="section-lead">
+          Een tussendoortje kan nuttig zijn om de energie op peil te houden tussen de maaltijden. De beste keuzes zijn zo min mogelijk bewerkt en bevatten geen toegevoegde suikers.
+        </p>
+        <div class="snack-grid" role="list" aria-label="Lijst van gezonde tussendoortjes">
+          <div class="snack-item" role="listitem"><span class="snack-emoji" aria-hidden="true">🍎</span> Stuk fruit</div>
+          <div class="snack-item" role="listitem"><span class="snack-emoji" aria-hidden="true">🥕</span> Groentesticks</div>
+          <div class="snack-item" role="listitem"><span class="snack-emoji" aria-hidden="true">🥛</span> Yoghurt natuur</div>
+          <div class="snack-item" role="listitem"><span class="snack-emoji" aria-hidden="true">🌾</span> Volkoren cracker</div>
+          <div class="snack-item" role="listitem"><span class="snack-emoji" aria-hidden="true">🍙</span> Rijstwafel</div>
+          <div class="snack-item" role="listitem"><span class="snack-emoji" aria-hidden="true">🥜</span> Ongezouten noten*</div>
+          <div class="snack-item" role="listitem"><span class="snack-emoji" aria-hidden="true">🍪</span> Havermoutkoekjes</div>
+          <div class="snack-item" role="listitem"><span class="snack-emoji" aria-hidden="true">🧀</span> Kaasblokjes</div>
+          <div class="snack-item" role="listitem"><span class="snack-emoji" aria-hidden="true">🥚</span> Gekookt ei</div>
+          <div class="snack-item" role="listitem"><span class="snack-emoji" aria-hidden="true">🫘</span> Hummus met groenten</div>
+          <div class="snack-item" role="listitem"><span class="snack-emoji" aria-hidden="true">🍇</span> Druiven of bessen</div>
+          <div class="snack-item" role="listitem"><span class="snack-emoji" aria-hidden="true">🍌</span> Banaan of peer</div>
+        </div>
+        <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1.5rem;">* Controleer altijd of noten zijn toegestaan op school vanwege allergie-richtlijnen.</p>
+        <div class="warning-box" role="alert" aria-label="Let op misleidende producten">
+          <div class="warning-icon" aria-hidden="true">⚠️</div>
+          <div>
+            <p><strong>Opgelet: producten die gezonder lijken dan ze zijn.</strong> Sommige producten lijken een goede keuze maar bevatten verrassend veel toegevoegde suiker:</p>
+            <ul role="list">
+              <li role="listitem">Fruitsap</li>
+              <li role="listitem">Gesuikerde yoghurt</li>
+              <li role="listitem">Ontbijtkoeken</li>
+              <li role="listitem">Mueslirepen</li>
+              <li role="listitem">Kinderkoeken</li>
+              <li role="listitem">Gezouten rijstwafels</li>
+            </ul>
+            <p style="margin-top:0.5rem;">Check het etiket: kies voor producten waarbij suiker niet in de eerste 3 ingrediënten staat.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 6. DRANKEN ===== -->
+    <section class="section section-blue" id="dranken" aria-labelledby="dranken-title">
+      <div class="container">
+        <span class="section-tag">Hydratatie</span>
+        <h2 class="section-title" id="dranken-title">Dranken op school: water staat op nummer 1</h2>
+        <p class="section-lead">
+          Kinderen raken op school sneller uitgedroogd dan ze beseffen. De keuze van de drank maakt een groot verschil voor hun energieniveau en concentratie.
+        </p>
+        <div class="drinks-grid">
+          <div class="drink-card best" role="article" aria-label="Beste keuze: water">
+            <div class="drink-card-icon" aria-hidden="true">💧</div>
+            <div>
+              <span class="drink-badge badge-best">Beste keuze</span>
+              <h3>Water</h3>
+              <p>Water is de ideale dorstlesser voor kinderen. Het bevat geen suiker, calorieën of kleur- en smaakstoffen. Geef een gevulde drinkfles mee zodat je kind de hele dag kan drinken.</p>
+            </div>
+          </div>
+          <div class="drink-card ok" role="article" aria-label="Kan passen: melk">
+            <div class="drink-card-icon" aria-hidden="true">🥛</div>
+            <div>
+              <span class="drink-badge badge-ok">Kan passen</span>
+              <h3>Melk of ongezoet alternatief</h3>
+              <p>Halfvolle melk of een ongezoet plantaardig alternatief (zoals ongezoete sojamelk) kunnen een aanvulling zijn. Let op toegevoegde suikers bij plantaardige varianten.</p>
+            </div>
+          </div>
+          <div class="drink-card limit" role="article" aria-label="Beperk: frisdrank en sap">
+            <div class="drink-card-icon" aria-hidden="true">🧃</div>
+            <div>
+              <span class="drink-badge badge-limit">Beperk</span>
+              <h3>Sap, frisdrank, sportdrank</h3>
+              <p>Fruitsap, frisdrank, sportdranken en energiedranken zijn niet geschikt als dagelijkse dorstlesser voor kinderen. Ze bevatten veel suiker en weinig voedingswaarde.</p>
+            </div>
+          </div>
+        </div>
+        <div class="water-tips" role="complementary" aria-label="Tips om water aantrekkelijker te maken">
+          <h3>💡 Hoe maak je water aantrekkelijker?</h3>
+          <ul>
+            <li>Geef een leuke, persoonlijke drinkfles mee — kinderen drinken meer als ze hun fles cool vinden</li>
+            <li>Voeg een schijfje citroen, munt of komkommer toe voor een subtiele smaak</li>
+            <li>Maak vaste drinkmomenten: bij het opstaan, voor school, tijdens de pauze en na het sporten</li>
+            <li>Zet water 's avonds al klaar zodat je kind er 's morgens makkelijk aan denkt</li>
+            <li>Gebruik bruiswater als variatie, als je kind dat lekker vindt — dat telt ook mee</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 7. KINDEREN BETREKKEN ===== -->
+    <section class="section" id="betrekken" aria-labelledby="betrekken-title">
+      <div class="container">
+        <span class="section-tag">Samen doen</span>
+        <h2 class="section-title" id="betrekken-title">Hoe betrek je kinderen bij gezonde voeding?</h2>
+        <p class="section-lead">
+          Kinderen eten beter wat ze zelf mee gekozen of gemaakt hebben. Kleine momenten van inspraak maken een groot verschil — zonder aandringen of dwang.
+        </p>
+        <div class="involve-grid">
+          <div class="involve-item">
+            <div class="involve-num" aria-hidden="true">1</div>
+            <div>
+              <h3>Laat mee kiezen</h3>
+              <p>Geef je kind de keuze tussen twee gezonde opties: "Wil jij morgen appel of peer?" Zo heeft het kind inspraak, maar blijf je als ouder de structuur bepalen.</p>
+            </div>
+          </div>
+          <div class="involve-item">
+            <div class="involve-num" aria-hidden="true">2</div>
+            <div>
+              <h3>Maak samen de brooddoos</h3>
+              <p>Laat kinderen helpen bij het klaarmaken: brood smeren, groenten snijden (met aangepast mesje), doosje inpakken. Meehelpen vergroot betrokkenheid en nieuwsgierigheid.</p>
+            </div>
+          </div>
+          <div class="involve-item">
+            <div class="involve-num" aria-hidden="true">3</div>
+            <div>
+              <h3>Gebruik kleur en variatie</h3>
+              <p>Een kleurrijke brooddoos is visueel aantrekkelijker. Gebruik rode paprika, oranje wortel, groene druiven en geel fruit. Kleur maakt eten leuk — ook voor kinderen.</p>
+            </div>
+          </div>
+          <div class="involve-item">
+            <div class="involve-num" aria-hidden="true">4</div>
+            <div>
+              <h3>Geef leuke vormen</h3>
+              <p>Komkommer in sterretjes, boterham in driehoeken of fruit op een stokje — kleine visuele trucs kunnen helpen om kinderen enthousiaster te maken voor groenten en fruit.</p>
+            </div>
+          </div>
+          <div class="involve-item">
+            <div class="involve-num" aria-hidden="true">5</div>
+            <div>
+              <h3>Maak een weekplanning</h3>
+              <p>Beslis samen op zondag welke lunch er elke dag inzit. Een simpel bordje of woordenlijstje geeft structuur en vermindert ochtendstress. Kinderen houden van voorspelbaarheid.</p>
+            </div>
+          </div>
+          <div class="involve-item">
+            <div class="involve-num" aria-hidden="true">6</div>
+            <div>
+              <h3>Geef zelf het goede voorbeeld</h3>
+              <p>Kinderen leren veel door te kijken. Als jij geniet van groenten en fruit, neemt je kind dat waar. Familiemaaltijden met gevarieerde keuzes geven een gezonde boodschap mee — zonder woorden.</p>
+            </div>
+          </div>
+          <div class="involve-item">
+            <div class="involve-num" aria-hidden="true">7</div>
+            <div>
+              <h3>Dwing niet, maar blijf aanbieden</h3>
+              <p>Kinderen die iets niet lusten, hoef je niet te dwingen. Blijf een nieuw voedsel rustig en herhaalmatig aanbieden, zonder druk. Soms zijn meer dan tien pogingen nodig voor acceptatie.</p>
+            </div>
+          </div>
+          <div class="involve-item">
+            <div class="involve-num" aria-hidden="true">8</div>
+            <div>
+              <h3>Stap voor stap nieuwe smaken</h3>
+              <p>Introduceer nieuwe voedingsmiddelen naast vertrouwde favorieten. Laat kinderen ruiken, aanraken en proeven zonder verplichting. Nieuwe smaken wennen geleidelijk.</p>
+            </div>
+          </div>
+        </div>
+        <div class="smaken-tip" role="note">
+          🔬 <strong>Wist je dit?</strong> Onderzoek toont aan dat kinderen een nieuw voedingsmiddel gemiddeld 5 tot 15 keer moeten proeven voor ze het accepteren. Herhaald aanbieden — zonder druk — is de sleutel.
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 8. DRUKKE OUDERS ===== -->
+    <section class="section section-alt" id="druk" aria-labelledby="druk-title">
+      <div class="container">
+        <span class="section-tag">Praktisch</span>
+        <h2 class="section-title" id="druk-title">Tips voor drukke ouders</h2>
+        <p class="section-lead">
+          Gezonde voeding hoeft niet veel tijd te kosten. Kleine aanpassingen in je routine kunnen een groot verschil maken — zonder dat je elke dag creatief hoeft te zijn.
+        </p>
+
+        <!-- Random tip banner -->
+        <div class="tip-banner" role="complementary" aria-label="Willekeurige brooddoostip">
+          <h3>💡 Snelle brooddoostip</h3>
+          <div class="tip-display" id="tipDisplay" aria-live="polite" aria-atomic="true">
+            Klik op de knop voor een snelle tip!
+          </div>
+          <button class="btn-tip" id="tipBtn" onclick="showRandomTip()" aria-label="Toon een nieuwe snelle brooddoostip">
+            🎲 Toon snelle brooddoostip
+          </button>
+        </div>
+
+        <div class="tips-grid" role="list">
+          <div class="tip-row" role="listitem">
+            <div class="tip-icon" aria-hidden="true">🥕</div>
+            <div><strong>Bereid groenten voor op zondag.</strong> Snij wortels, komkommer en paprika in stukjes en bewaar ze in een doos in de koelkast. Zo heb je de hele week kant-en-klare groenten.</div>
+          </div>
+          <div class="tip-row" role="listitem">
+            <div class="tip-icon" aria-hidden="true">🔄</div>
+            <div><strong>Vaste brooddoosroutine.</strong> Gebruik elke dag dezelfde structuur: 1 koolhydraat + 1 groente + 1 fruit + 1 eiwit. Varieer de invulling, houd de structuur vast.</div>
+          </div>
+          <div class="tip-row" role="listitem">
+            <div class="tip-icon" aria-hidden="true">📋</div>
+            <div><strong>Werk met een weekmenu.</strong> Plan op zondag wat je kind elke dag meekrijgt. Schrijf het op of hang het zichtbaar op. Dit bespaart elke ochtend denkwerk en stress.</div>
+          </div>
+          <div class="tip-row" role="listitem">
+            <div class="tip-icon" aria-hidden="true">🍝</div>
+            <div><strong>Gebruik restjes.</strong> Restjes pasta, rijst of couscous van het avondeten zijn uitstekend voor de brooddoos van de volgende dag. Voeg wat groenten toe en klaar.</div>
+          </div>
+          <div class="tip-row" role="listitem">
+            <div class="tip-icon" aria-hidden="true">❄️</div>
+            <div><strong>Vries gezonde snacks in.</strong> Zelfgemaakte havermoutkoekjes of bananenbrood kun je in bulk maken en invriezen. 's Morgens één pakje uitnemen is alles wat nodig is.</div>
+          </div>
+          <div class="tip-row" role="listitem">
+            <div class="tip-icon" aria-hidden="true">📝</div>
+            <div><strong>Maak een vaste lijst.</strong> Schrijf 5 combinaties op die je kind lekker vindt en wissel die af. Je hoeft niet elke dag te bedenken wat erin gaat.</div>
+          </div>
+          <div class="tip-row" role="listitem">
+            <div class="tip-icon" aria-hidden="true">🛒</div>
+            <div><strong>Houd basisproducten in huis.</strong> Volkoren brood, kaas, hummus, yoghurt natuur, appels, wortel — met deze vaste voorraad kan je altijd een goede brooddoos samenstellen.</div>
+          </div>
+          <div class="tip-row" role="listitem">
+            <div class="tip-icon" aria-hidden="true">😌</div>
+            <div><strong>Maak het niet te moeilijk.</strong> Een simpele maar evenwichtige brooddoos is beter dan een perfecte die te veel tijd kost. Consistentie wint het van creativiteit.</div>
+          </div>
+          <div class="tip-row" role="listitem">
+            <div class="tip-icon" aria-hidden="true">🌙</div>
+            <div><strong>Bereid de brooddoos 's avonds voor.</strong> Leg alles klaar 's avonds na het eten. 's Morgens hoef je alleen nog de drinkfles te vullen en je bent klaar.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 9. VALKUILEN ===== -->
+    <section class="section" id="valkuilen" aria-labelledby="valkuilen-title">
+      <div class="container">
+        <span class="section-tag">Misverstanden</span>
+        <h2 class="section-title" id="valkuilen-title">Veelgemaakte valkuilen</h2>
+        <p class="section-lead">
+          Sommige ideeën over voeding klinken logisch maar kloppen niet helemaal. Hier zijn de meest voorkomende misverstanden — feitelijk en zonder oordeel uitgelegd.
+        </p>
+        <div class="myth-grid">
+          <div class="myth-card">
+            <div class="myth-header">
+              <span aria-hidden="true">❌</span> "Fruitsap is hetzelfde als fruit"
+            </div>
+            <div class="myth-body">
+              <strong>Wat klopt:</strong> Fruitsap bevat vitaminen, maar ook veel suiker en nauwelijks vezels. Bij het persen gaan de vezels verloren die in heel fruit voor een trage suikeropname zorgen. Heel fruit is altijd de betere keuze.
+            </div>
+          </div>
+          <div class="myth-card">
+            <div class="myth-header">
+              <span aria-hidden="true">❌</span> "Kinderkoeken zijn altijd gezond"
+            </div>
+            <div class="myth-body">
+              <strong>Wat klopt:</strong> "Kinder"-producten zijn een marketingterm, geen voedingslabel. Veel kinderkoeken en -snacks bevatten evenveel of meer suiker dan gewone koeken. Check altijd de ingrediëntenlijst.
+            </div>
+          </div>
+          <div class="myth-card">
+            <div class="myth-header">
+              <span aria-hidden="true">❌</span> "Mijn kind lust geen groenten, dus ik stop ermee"
+            </div>
+            <div class="myth-body">
+              <strong>Wat klopt:</strong> Smaakvoorkeur is aangeleerd en veranderbaar. Kinderen moeten soms tot 15 keer proeven voor ze iets accepteren. Blijf groenten aanbieden naast vertrouwde voeding, zonder dwang of stress.
+            </div>
+          </div>
+          <div class="myth-card">
+            <div class="myth-header">
+              <span aria-hidden="true">❌</span> "Gezond eten is altijd duur"
+            </div>
+            <div class="myth-body">
+              <strong>Wat klopt:</strong> Seizoensgroenten, eieren, peulvruchten, havermout en volkorenbrood zijn betaalbaar en voedzaam. Bewerkte kindersnacks kosten vaak meer per portie dan eenvoudige echte voeding.
+            </div>
+          </div>
+          <div class="myth-card">
+            <div class="myth-header">
+              <span aria-hidden="true">❌</span> "Een gezonde brooddoos moet elke dag origineel zijn"
+            </div>
+            <div class="myth-body">
+              <strong>Wat klopt:</strong> Herhaling en structuur zijn juist gunstig voor kinderen. Een herkenbaar, evenwichtig lunchemenu geeft rust. Varieer gerust binnen een vaste structuur in plaats van elke dag iets nieuws te bedenken.
+            </div>
+          </div>
+          <div class="myth-card">
+            <div class="myth-header">
+              <span aria-hidden="true">❌</span> "Mijn kind eet niet genoeg als de lunch niet lekker genoeg is"
+            </div>
+            <div class="myth-body">
+              <strong>Wat klopt:</strong> Kinderen eten doorgaans niet minder als ze minder suikerrijke alternatieven krijgen. Hunger en eetlust reguleren zichzelf — zeker als kinderen ook thuis gevarieerd eten.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 10. VOORBEELDWEEK ===== -->
+    <section class="section section-green" id="voorbeeldweek" aria-labelledby="week-title">
+      <div class="container">
+        <span class="section-tag">Inspiratie</span>
+        <h2 class="section-title" id="week-title">Voorbeeldweek voor de brooddoos</h2>
+        <p class="section-lead">
+          Een haalbare en evenwichtige week — geen strakke regels, maar inspiratie om van te vertrekken.
+        </p>
+
+        <!-- Desktop table -->
+        <div class="week-scroll" role="region" aria-label="Voorbeeldweek brooddoos" tabindex="0">
+          <table class="week-table" aria-label="Weekoverzicht gezonde brooddoos">
+            <thead>
+              <tr>
+                <th scope="col">Dag</th>
+                <th scope="col">🍞 Koolhydraat</th>
+                <th scope="col">🥦 Groente</th>
+                <th scope="col">🍎 Fruit</th>
+                <th scope="col">🧀 Eiwit/extra</th>
+                <th scope="col">💧 Drank</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Maandag</td>
+                <td>Volkoren boterham met kaas</td>
+                <td>Komkommer</td>
+                <td>Appel</td>
+                <td>Kaas</td>
+                <td>Water</td>
+              </tr>
+              <tr>
+                <td>Dinsdag</td>
+                <td>Volkoren wrap met hummus</td>
+                <td>Wortelstaafjes</td>
+                <td>Banaan</td>
+                <td>Hummus + kip</td>
+                <td>Water</td>
+              </tr>
+              <tr>
+                <td>Woensdag</td>
+                <td>Pastasalade</td>
+                <td>Kerstomaten</td>
+                <td>Peer</td>
+                <td>Yoghurt natuur</td>
+                <td>Water</td>
+              </tr>
+              <tr>
+                <td>Donderdag</td>
+                <td>Volkoren brood met ei</td>
+                <td>Paprika</td>
+                <td>Druiven</td>
+                <td>Gekookt ei</td>
+                <td>Water</td>
+              </tr>
+              <tr>
+                <td>Vrijdag</td>
+                <td>Rijstsalade of restjes</td>
+                <td>Maïs of groene sla</td>
+                <td>Bessen of mandarijn</td>
+                <td>Kaasblokjes</td>
+                <td>Water</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile cards -->
+        <div class="week-cards" aria-label="Weekoverzicht gezonde brooddoos">
+          <div class="week-card">
+            <div class="week-card-day">Maandag</div>
+            <div class="week-card-body">
+              <div class="week-card-item"><span aria-hidden="true">🍞</span> Volkoren boterham met kaas</div>
+              <div class="week-card-item"><span aria-hidden="true">🥕</span> Komkommer</div>
+              <div class="week-card-item"><span aria-hidden="true">🍎</span> Appel</div>
+              <div class="week-card-item"><span aria-hidden="true">💧</span> Water</div>
+            </div>
+          </div>
+          <div class="week-card">
+            <div class="week-card-day">Dinsdag</div>
+            <div class="week-card-body">
+              <div class="week-card-item"><span aria-hidden="true">🌯</span> Volkoren wrap met hummus</div>
+              <div class="week-card-item"><span aria-hidden="true">🥕</span> Wortelstaafjes</div>
+              <div class="week-card-item"><span aria-hidden="true">🍌</span> Banaan</div>
+              <div class="week-card-item"><span aria-hidden="true">💧</span> Water</div>
+            </div>
+          </div>
+          <div class="week-card">
+            <div class="week-card-day">Woensdag</div>
+            <div class="week-card-body">
+              <div class="week-card-item"><span aria-hidden="true">🍝</span> Pastasalade met groenten</div>
+              <div class="week-card-item"><span aria-hidden="true">🍅</span> Kerstomaten</div>
+              <div class="week-card-item"><span aria-hidden="true">🍐</span> Peer</div>
+              <div class="week-card-item"><span aria-hidden="true">💧</span> Water + yoghurt natuur</div>
+            </div>
+          </div>
+          <div class="week-card">
+            <div class="week-card-day">Donderdag</div>
+            <div class="week-card-body">
+              <div class="week-card-item"><span aria-hidden="true">🍞</span> Volkoren brood met ei</div>
+              <div class="week-card-item"><span aria-hidden="true">🫑</span> Paprika</div>
+              <div class="week-card-item"><span aria-hidden="true">🍇</span> Druiven</div>
+              <div class="week-card-item"><span aria-hidden="true">💧</span> Water</div>
+            </div>
+          </div>
+          <div class="week-card">
+            <div class="week-card-day">Vrijdag</div>
+            <div class="week-card-body">
+              <div class="week-card-item"><span aria-hidden="true">🍚</span> Rijstsalade of restjes</div>
+              <div class="week-card-item"><span aria-hidden="true">🌽</span> Maïs of groene sla</div>
+              <div class="week-card-item"><span aria-hidden="true">🫐</span> Bessen of mandarijn</div>
+              <div class="week-card-item"><span aria-hidden="true">💧</span> Water</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 11. CHECKLIST ===== -->
+    <section class="section section-yellow" id="checklist" aria-labelledby="checklist-title">
+      <div class="container">
+        <span class="section-tag">Zelfcheck</span>
+        <h2 class="section-title" id="checklist-title">Snelle brooddooscheck</h2>
+        <p class="section-lead">
+          Voor je de brooddoos dichtdoet, even snel nagaan. Vink de vakjes aan zodra je ze hebt gecheckt.
+        </p>
+        <div class="checklist" role="group" aria-label="Brooddooschecklist" id="checklistContainer">
+          <div class="checklist-item" role="checkbox" aria-checked="false" tabindex="0" onclick="toggleCheck(this)" onkeydown="handleKeyCheck(event, this)">
+            <div class="check-box" aria-hidden="true">✓</div>
+            <label>💧 Zit er water bij?</label>
+          </div>
+          <div class="checklist-item" role="checkbox" aria-checked="false" tabindex="0" onclick="toggleCheck(this)" onkeydown="handleKeyCheck(event, this)">
+            <div class="check-box" aria-hidden="true">✓</div>
+            <label>🥦 Zit er fruit of groente bij?</label>
+          </div>
+          <div class="checklist-item" role="checkbox" aria-checked="false" tabindex="0" onclick="toggleCheck(this)" onkeydown="handleKeyCheck(event, this)">
+            <div class="check-box" aria-hidden="true">✓</div>
+            <label>🌾 Zit er iets volkoren bij?</label>
+          </div>
+          <div class="checklist-item" role="checkbox" aria-checked="false" tabindex="0" onclick="toggleCheck(this)" onkeydown="handleKeyCheck(event, this)">
+            <div class="check-box" aria-hidden="true">✓</div>
+            <label>🧀 Zit er een eiwitbron bij?</label>
+          </div>
+          <div class="checklist-item" role="checkbox" aria-checked="false" tabindex="0" onclick="toggleCheck(this)" onkeydown="handleKeyCheck(event, this)">
+            <div class="check-box" aria-hidden="true">✓</div>
+            <label>😊 Is het haalbaar voor mijn kind?</label>
+          </div>
+          <div class="checklist-item" role="checkbox" aria-checked="false" tabindex="0" onclick="toggleCheck(this)" onkeydown="handleKeyCheck(event, this)">
+            <div class="check-box" aria-hidden="true">✓</div>
+            <label>📏 Is de portie aangepast aan de eetlust van mijn kind?</label>
+          </div>
+          <div class="checklist-item" role="checkbox" aria-checked="false" tabindex="0" onclick="toggleCheck(this)" onkeydown="handleKeyCheck(event, this)">
+            <div class="check-box" aria-hidden="true">✓</div>
+            <label>🔄 Is er voldoende variatie doorheen de week?</label>
+          </div>
+        </div>
+        <div class="checklist-progress" aria-label="Voortgang checklist">
+          <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0" id="progressBar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <span class="progress-label" id="progressLabel">0 van 7 gecheckt</span>
+        </div>
+        <p id="checklistMessage" style="margin-top:1rem;font-size:0.88rem;color:var(--green-dark);font-weight:600;min-height:1.4em;" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- ===== 12. BRONNEN ===== -->
+    <section class="section" id="bronnen" aria-labelledby="bronnen-title">
+      <div class="container">
+        <span class="section-tag">Betrouwbaarheid</span>
+        <h2 class="section-title" id="bronnen-title">Bronnen en betrouwbaarheid</h2>
+        <div class="sources-box">
+          <div class="sources-disclaimer" role="note">
+            <p>
+              <strong>Disclaimer:</strong> Deze website is gebaseerd op algemene, objectieve voedingsrichtlijnen en erkende gezondheidsinformatie. De informatie is bedoeld als ondersteuning voor ouders en vervangt geen persoonlijk medisch advies. Bij allergieën, medische aandoeningen of specifieke voedingsnoden is advies van een arts, diëtist of schoolverpleegkundige aangewezen.
+            </p>
+          </div>
+          <div class="sources-list" role="list" aria-label="Gebruikte bronnen">
+            <div class="source-item" role="listitem">
+              <div class="source-icon" aria-hidden="true">🏥</div>
+              <div>
+                <strong>Vlaams Instituut Gezond Leven</strong><br>
+                <span style="font-size:0.8rem;color:var(--text-muted)">Gezondleven.be — voedingsdriehoek, schoolvoeding, richtlijnen</span>
+              </div>
+            </div>
+            <div class="source-item" role="listitem">
+              <div class="source-icon" aria-hidden="true">🔺</div>
+              <div>
+                <strong>De voedingsdriehoek</strong><br>
+                <span style="font-size:0.8rem;color:var(--text-muted)">Officieel Vlaams model voor evenwichtige voeding</span>
+              </div>
+            </div>
+            <div class="source-item" role="listitem">
+              <div class="source-icon" aria-hidden="true">👶</div>
+              <div>
+                <strong>Kind en Gezin / Opgroeien</strong><br>
+                <span style="font-size:0.8rem;color:var(--text-muted)">Opgroeien.be — voeding en ontwikkeling voor kinderen</span>
+              </div>
+            </div>
+            <div class="source-item" role="listitem">
+              <div class="source-icon" aria-hidden="true">🌍</div>
+              <div>
+                <strong>World Health Organization (WHO)</strong><br>
+                <span style="font-size:0.8rem;color:var(--text-muted)">Internationale richtlijnen rond voeding, suikerinname en kindervoeding</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <strong>Gezonde voeding op school</strong>
+    <p>Informatieve website voor ouders van lagere schoolkinderen · Gebaseerd op erkende gezondheidsrichtlijnen</p>
+    <p style="margin-top:0.75rem;font-size:0.78rem;color:#8fa892;">Geen commerciële belangen · Geen gesponsorde inhoud · Betrouwbare bronnen</p>
+  </footer>
+
+  <script>
+    /* ===== HAMBURGER MENU ===== */
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileLinks = mobileNav.querySelectorAll('a');
+
+    hamburgerBtn.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      hamburgerBtn.classList.toggle('open', isOpen);
+      hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+      hamburgerBtn.setAttribute('aria-label', isOpen ? 'Menu sluiten' : 'Menu openen');
+    });
+
+    // Close mobile nav on link click
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+        hamburgerBtn.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+        hamburgerBtn.setAttribute('aria-label', 'Menu openen');
+      });
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!hamburgerBtn.contains(e.target) && !mobileNav.contains(e.target)) {
+        mobileNav.classList.remove('open');
+        hamburgerBtn.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+        hamburgerBtn.setAttribute('aria-label', 'Menu openen');
+      }
+    });
+
+    /* ===== RANDOM TIPS ===== */
+    const tips = [
+      "Snij op zondagavond groenten voor de hele week en bewaar ze in aparte bakjes in de koelkast.",
+      "Gebruik restjes pasta of rijst van het avondeten — voeg wat groenten toe en je hebt een perfecte lunch!",
+      "Een appel gaat nooit in de riem op — simpel, voedzaam en altijd bij de hand.",
+      "Maak 's avonds de brooddoos klaar. 's Morgens hoef je alleen nog de drinkfles te vullen.",
+      "Volkoren brood + kaas + komkommer = simpelste evenwichtige lunch die werkt.",
+      "Koop een leuke drinkfles samen met je kind. Kinderen drinken sneller meer als ze trots zijn op hun fles.",
+      "Bessen invriezen en de avond voor gebruik in een bakje zetten = makkelijk fruit voor de volgende dag.",
+      "Hummus is een geweldige eiwitbron en kinderen vinden het vaak lekker als dip bij groentesticks.",
+      "Maak één keer per week een grote batch havermoutkoekjes — invriezen en dagelijks één meegeven.",
+      "Schrijf 5 favoriete lunchemenu's op een briefje op de koelkast. Gebruik die als vaste rotatie.",
+      "Voeg een kleine verrassingsnoot toe: een leuk stickerke, korte berichtje of verhaaltje in de brooddoos.",
+      "Laat je kind het fruit zelf uitkiezen in de supermarkt — betrokkenheid verhoogt de kans dat het opgegeten wordt.",
+      "Rijstwafels zijn een handige basisoptie: combineer ze met een dun laagje pindakaas voor meer verzadiging.",
+      "Kerstomaatjes zijn niet alleen gezond maar ook klein en makkelijk te eten — ideaal voor op school.",
+      "Eet je 's avonds soep? Zet een extra portie opzij als warme maaltijd voor een koude schooldag.",
+    ];
+
+    let lastTipIndex = -1;
+
+    function showRandomTip() {
+      let idx;
+      do { idx = Math.floor(Math.random() * tips.length); } while (idx === lastTipIndex && tips.length > 1);
+      lastTipIndex = idx;
+      const display = document.getElementById('tipDisplay');
+      display.style.opacity = '0';
+      setTimeout(() => {
+        display.textContent = tips[idx];
+        display.style.opacity = '1';
+        display.style.transition = 'opacity 0.3s';
+      }, 150);
+    }
+
+    // Show first tip on load
+    document.addEventListener('DOMContentLoaded', showRandomTip);
+
+    /* ===== CHECKLIST ===== */
+    function updateProgress() {
+      const items = document.querySelectorAll('.checklist-item');
+      const total = items.length;
+      const checked = document.querySelectorAll('.checklist-item.checked').length;
+      const fill = document.getElementById('progressFill');
+      const label = document.getElementById('progressLabel');
+      const bar = document.getElementById('progressBar');
+      const msg = document.getElementById('checklistMessage');
+      const pct = Math.round((checked / total) * 100);
+      fill.style.width = pct + '%';
+      label.textContent = checked + ' van ' + total + ' gecheckt';
+      bar.setAttribute('aria-valuenow', checked);
+      if (checked === total) {
+        msg.textContent = '🎉 Geweldig! De brooddoos is helemaal klaar!';
+      } else if (checked >= total - 1) {
+        msg.textContent = '👍 Bijna klaar!';
+      } else if (checked > 0) {
+        msg.textContent = '✅ Goed bezig!';
+      } else {
+        msg.textContent = '';
+      }
+    }
+
+    function toggleCheck(el) {
+      const isChecked = el.classList.toggle('checked');
+      el.setAttribute('aria-checked', String(isChecked));
+      updateProgress();
+    }
+
+    function handleKeyCheck(e, el) {
+      if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault();
+        toggleCheck(el);
+      }
+    }
+  </script>
+</body>
+</html>
