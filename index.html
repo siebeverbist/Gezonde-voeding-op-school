@@ -181,7 +181,9 @@
     }
     .section {
       padding: 4.5rem 0;
+      scroll-margin-top: var(--nav-h);
     }
+    .hero { scroll-margin-top: var(--nav-h); }
     .section-alt { background: var(--gray-100); }
     .section-green { background: var(--green-pale); }
     .section-yellow { background: var(--yellow-soft); }
@@ -343,6 +345,33 @@
       line-height: 1;
     }
     .hero-stat-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+    /* Hero decorative bento illustration */
+    .hero-deco-box {
+      background: rgba(255,255,255,0.7);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md);
+      max-width: 320px;
+      margin: 0 auto;
+    }
+    .hero-deco-emoji {
+      font-size: 2.25rem;
+      margin-bottom: 0.85rem;
+      text-align: center;
+    }
+    .hero-deco-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+    .hero-deco-item {
+      border-radius: var(--radius-md);
+      padding: 0.65rem;
+      text-align: center;
+      font-size: 1.3rem;
+    }
+    .hero-deco-item-wide { grid-column: span 2; }
 
     /* ===== WHY SECTION ===== */
     .why-grid {
@@ -921,6 +950,32 @@
       .week-scroll { display: none; }
     }
 
+    /* ===== MOBILE-SPECIFIC HERO TWEAKS (<900px) ===== */
+    @media (max-width: 899px) {
+      .hero {
+        min-height: auto;
+        padding-top: calc(var(--nav-h) + 1.5rem);
+        padding-bottom: 2.5rem;
+      }
+      .hero-inner { gap: 1.75rem; }
+      .hero-cta { flex-direction: column; }
+      .hero-cta .btn { width: 100%; justify-content: center; }
+      .hero-deco-box { max-width: 280px; padding: 1.25rem; }
+      .hero-deco-emoji { font-size: 2rem; margin-bottom: 0.65rem; }
+      .hero-deco-item { font-size: 1.15rem; padding: 0.55rem; }
+    }
+
+    /* ===== SMALL MOBILE (≤400px) ===== */
+    @media (max-width: 400px) {
+      .section { padding: 3.5rem 0; }
+      .section-lead { margin-bottom: 1.75rem; }
+      .hero { padding-top: calc(var(--nav-h) + 1rem); padding-bottom: 2rem; }
+      .hero-inner { gap: 1.25rem; }
+      .hero-intro { padding: 0.85rem 1rem; font-size: 0.92rem; }
+      .hero-stats { gap: 0.6rem; }
+      .hero-stat { min-width: 0; flex: 1 1 100%; padding: 0.75rem 1rem; }
+    }
+
     /* ===== REDUCED MOTION ===== */
     @media (prefers-reduced-motion: reduce) {
       * { transition: none !important; animation: none !important; }
@@ -1020,14 +1075,14 @@
             </div>
           </div>
           <div class="hero-deco" aria-hidden="true">
-            <div style="background:rgba(255,255,255,0.7);border-radius:var(--radius-lg);padding:2rem;box-shadow:var(--shadow-md);max-width:340px;margin:0 auto;">
-              <div style="font-size:2.5rem;margin-bottom:1rem;text-align:center">🍱</div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
-                <div style="background:var(--green-light);border-radius:var(--radius-md);padding:0.85rem;text-align:center;font-size:1.5rem;">🍞</div>
-                <div style="background:#fde8e8;border-radius:var(--radius-md);padding:0.85rem;text-align:center;font-size:1.5rem;">🥕</div>
-                <div style="background:#fff3cd;border-radius:var(--radius-md);padding:0.85rem;text-align:center;font-size:1.5rem;">🍎</div>
-                <div style="background:#e8f4f8;border-radius:var(--radius-md);padding:0.85rem;text-align:center;font-size:1.5rem;">🧀</div>
-                <div style="background:#d0f0f8;border-radius:var(--radius-md);padding:0.85rem;text-align:center;font-size:1.5rem;grid-column:span 2;">💧 Water</div>
+            <div class="hero-deco-box">
+              <div class="hero-deco-emoji">🍱</div>
+              <div class="hero-deco-grid">
+                <div class="hero-deco-item" style="background:var(--green-light);">🍞</div>
+                <div class="hero-deco-item" style="background:#fde8e8;">🥕</div>
+                <div class="hero-deco-item" style="background:#fff3cd;">🍎</div>
+                <div class="hero-deco-item" style="background:#e8f4f8;">🧀</div>
+                <div class="hero-deco-item hero-deco-item-wide" style="background:#d0f0f8;">💧 Water</div>
               </div>
             </div>
           </div>
